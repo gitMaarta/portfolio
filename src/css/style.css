@@ -1,0 +1,348 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.container {
+  max-width: 1190px;
+  width: 96%;
+  margin: auto;
+}
+
+header {
+  margin: 0;
+  background-color: #e12835;
+  background-image: radial-gradient(#e12835 20%, #be2633 50%, rgba(0, 0, 0, 0.5) 100%);
+  background-size: 120%;
+  background-position: center;
+  font-family: "Barlow Condensed", sans-serif;
+  -webkit-animation: tighten-vinette ease-out 1800ms forwards;
+          animation: tighten-vinette ease-out 1800ms forwards;
+}
+
+.images {
+  pointer-events: none;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+  opacity: .6;
+  z-index: 20;
+  background-size: cover;
+  background-position: center;
+  background-repeat: none;
+  background-image: url("../img/hulk.jpg");
+}
+
+.wrapper {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.logo {
+  cursor: pointer;
+  text-align: center;
+}
+
+.logo:hover .title {
+  opacity: .8;
+}
+
+.title {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -.08rem;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  -webkit-transition: opacity 150ms linear;
+  transition: opacity 150ms linear;
+}
+
+.name, .surname {
+  position: relative;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -.2rem;
+  font-size: 5rem;
+  margin: .05rem .05rem .5rem;
+  padding: 0 0.4rem;
+  display: inline-block;
+}
+
+.surname {
+  font-weight: 500;
+  letter-spacing: -.3rem;
+  -webkit-transform: translateX(-95px);
+          transform: translateX(-95px);
+}
+
+.name {
+  z-index: 10;
+  font-weight: 800;
+  -webkit-transform: translateX(95px);
+          transform: translateX(95px);
+}
+
+.name::before {
+  z-index: -10;
+  content: '';
+  display: block;
+  background-color: #e12835;
+  border: solid rgba(255, 255, 255, 0.2) 1px;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.surname:after, .surname:before {
+  content: '';
+  display: block;
+  height: 2px;
+  position: absolute;
+  background-color: #fff;
+  display: block;
+  left: 0.4rem;
+  right: 0.4rem;
+}
+
+.surname:before {
+  top: 0;
+}
+
+.surname:after {
+  bottom: 0;
+}
+
+.wrapper, .run-animation {
+  -webkit-animation-name: shrink ease-out 4800ms forwards 600ms;
+          animation-name: shrink ease-out 4800ms forwards 600ms;
+}
+
+.wrapper .name, .run-animation .name {
+  -webkit-transform: translateX 95px;
+          transform: translateX 95px;
+  -webkit-animation: slide-out-X 750ms ease forwards;
+          animation: slide-out-X 750ms ease forwards;
+}
+
+.wrapper .surname, .run-animation .surname {
+  -webkit-transform: translateX 95px;
+          transform: translateX 95px;
+  color: transparent;
+  -webkit-animation: slide-out-X 750ms ease forwards, show-text 300ms linear forwards 1500ms;
+          animation: slide-out-X 750ms ease forwards, show-text 300ms linear forwards 1500ms;
+}
+
+.wrapper .surname:before, .run-animation .surname:before {
+  -webkit-transform: translateY 2.9rem;
+          transform: translateY 2.9rem;
+  -webkit-animation: slide-out-Y 300ms ease forwards 750ms;
+          animation: slide-out-Y 300ms ease forwards 750ms;
+}
+
+.wrapper .surname:after, .run-animation .surname:after {
+  -webkit-transform: translateY -2.9rem;
+          transform: translateY -2.9rem;
+  -webkit-animation: slide-out-Y 300ms ease forwards 750ms;
+          animation: slide-out-Y 300ms ease forwards 750ms;
+}
+
+.wrapper .title, .run-animation .title {
+  opacity: 0;
+  -webkit-animation: fade-down 1200ms ease 3600ms forwards;
+          animation: fade-down 1200ms ease 3600ms forwards;
+}
+
+.wrapper ~ .images, .run-animation ~ .images {
+  -webkit-animation: flicker-images 1500ms 2 steps 1, end, fade-out 4500ms forwards;
+          animation: flicker-images 1500ms 2 steps 1, end, fade-out 4500ms forwards;
+}
+
+@-webkit-keyframes slide-out-X {
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes slide-out-X {
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes slide-out-Y {
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes slide-out-Y {
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes show-text {
+  100% {
+    color: #fff;
+  }
+}
+
+@keyframes show-text {
+  100% {
+    color: #fff;
+  }
+}
+
+@-webkit-keyframes shrink {
+  100% {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+}
+
+@keyframes shrink {
+  100% {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+}
+
+@-webkit-keyframes tighten-vinette {
+  100% {
+    background-size: 120%;
+  }
+}
+
+@keyframes tighten-vinette {
+  100% {
+    background-size: 120%;
+  }
+}
+
+@-webkit-keyframes fade-down {
+  0% {
+    -webkit-transform: translateY(-2rem);
+            transform: translateY(-2rem);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: .5;
+  }
+}
+
+@keyframes fade-down {
+  0% {
+    -webkit-transform: translateY(-2rem);
+            transform: translateY(-2rem);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: .5;
+  }
+}
+
+@-webkit-keyframes fade-out {
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes flicker-images {
+  0% {
+    background-image: url("../img/maxresdefault.jpg");
+  }
+  10% {
+    background-image: url("../img/iron-man.jpg");
+  }
+  20% {
+    background-image: url("../img/hulk.jpg");
+  }
+  30% {
+    background-image: url("../img/captain-america.jpg");
+  }
+  40% {
+    background-image: url("../img/avengers.jpg");
+  }
+  50% {
+    background-image: url("../img/black-panther.jpg");
+  }
+  60% {
+    background-image: url("../img/deadpool.jpg");
+  }
+  70% {
+    background-image: url("../img/maxresdefault.jpg");
+  }
+  80% {
+    background-image: url("../img/hulk.jpg");
+  }
+  90% {
+    background-image: url("../img/deadpool.jpg");
+  }
+  100% {
+    background-image: url("../img/hulk.jpg");
+  }
+}
+
+@keyframes flicker-images {
+  0% {
+    background-image: url("../img/maxresdefault.jpg");
+  }
+  10% {
+    background-image: url("../img/iron-man.jpg");
+  }
+  20% {
+    background-image: url("../img/hulk.jpg");
+  }
+  30% {
+    background-image: url("../img/captain-america.jpg");
+  }
+  40% {
+    background-image: url("../img/avengers.jpg");
+  }
+  50% {
+    background-image: url("../img/black-panther.jpg");
+  }
+  60% {
+    background-image: url("../img/deadpool.jpg");
+  }
+  70% {
+    background-image: url("../img/maxresdefault.jpg");
+  }
+  80% {
+    background-image: url("../img/hulk.jpg");
+  }
+  90% {
+    background-image: url("../img/deadpool.jpg");
+  }
+  100% {
+    background-image: url("../img/hulk.jpg");
+  }
+}
+/*# sourceMappingURL=style.css.map */
