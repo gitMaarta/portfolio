@@ -9,18 +9,18 @@
   margin: auto;
 }
 
-header {
+.header {
   margin: 0;
   background-color: #e12835;
   background-image: radial-gradient(#e12835 20%, #be2633 50%, rgba(0, 0, 0, 0.5) 100%);
   background-size: 120%;
   background-position: center;
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
   -webkit-animation: tighten-vinette ease-out 1800ms forwards;
           animation: tighten-vinette ease-out 1800ms forwards;
 }
 
-.images {
+.image {
   pointer-events: none;
   height: 100vh;
   top: 0;
@@ -28,11 +28,11 @@ header {
   right: 0;
   left: 0;
   position: absolute;
-  opacity: .6;
+  opacity: 0.6;
   z-index: 20;
   background-size: cover;
   background-position: center;
-  background-repeat: none;
+  background-repeat: no-repeat;
   background-image: url("../img/hulk.jpg");
 }
 
@@ -55,13 +55,13 @@ header {
 }
 
 .logo:hover .title {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .title {
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: -.08rem;
+  letter-spacing: -0.08rem;
   font-size: 1.5rem;
   margin-top: 20px;
   -webkit-transition: opacity 150ms linear;
@@ -72,7 +72,7 @@ header {
   position: relative;
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: -.2rem;
+  letter-spacing: -0.2rem;
   font-size: 5rem;
   margin: .05rem .05rem .5rem;
   padding: 0 0.4rem;
@@ -81,7 +81,7 @@ header {
 
 .surname {
   font-weight: 500;
-  letter-spacing: -.3rem;
+  letter-spacing: -0.3rem;
   -webkit-transform: translateX(-95px);
           transform: translateX(-95px);
 }
@@ -93,7 +93,7 @@ header {
           transform: translateX(95px);
 }
 
-.name::before {
+.name:before {
   z-index: -10;
   content: '';
   display: block;
@@ -106,7 +106,7 @@ header {
   left: 0;
 }
 
-.surname:after, .surname:before {
+.surname::after, .surname::before {
   content: '';
   display: block;
   height: 2px;
@@ -117,57 +117,57 @@ header {
   right: 0.4rem;
 }
 
-.surname:before {
+.surname::before {
   top: 0;
 }
 
-.surname:after {
+.surname::after {
   bottom: 0;
 }
 
-.wrapper, .run-animation {
-  -webkit-animation-name: shrink ease-out 4800ms forwards 600ms;
-          animation-name: shrink ease-out 4800ms forwards 600ms;
+.wrapper.run-animation {
+  -webkit-animation: shrink ease-out 4800ms forwards 600ms;
+          animation: shrink ease-out 4800ms forwards 600ms;
 }
 
-.wrapper .name, .run-animation .name {
+.wrapper.run-animation .name {
   -webkit-transform: translateX 95px;
           transform: translateX 95px;
   -webkit-animation: slide-out-X 750ms ease forwards;
           animation: slide-out-X 750ms ease forwards;
 }
 
-.wrapper .surname, .run-animation .surname {
-  -webkit-transform: translateX 95px;
-          transform: translateX 95px;
+.wrapper.run-animation .surname {
+  -webkit-transform: translateX -95px;
+          transform: translateX -95px;
   color: transparent;
   -webkit-animation: slide-out-X 750ms ease forwards, show-text 300ms linear forwards 1500ms;
           animation: slide-out-X 750ms ease forwards, show-text 300ms linear forwards 1500ms;
 }
 
-.wrapper .surname:before, .run-animation .surname:before {
+.wrapper.run-animation .surname::before {
   -webkit-transform: translateY 2.9rem;
           transform: translateY 2.9rem;
   -webkit-animation: slide-out-Y 300ms ease forwards 750ms;
           animation: slide-out-Y 300ms ease forwards 750ms;
 }
 
-.wrapper .surname:after, .run-animation .surname:after {
+.wrapper.run-animation .surname::after {
   -webkit-transform: translateY -2.9rem;
           transform: translateY -2.9rem;
   -webkit-animation: slide-out-Y 300ms ease forwards 750ms;
           animation: slide-out-Y 300ms ease forwards 750ms;
 }
 
-.wrapper .title, .run-animation .title {
+.wrapper.run-animation .title {
   opacity: 0;
   -webkit-animation: fade-down 1200ms ease 3600ms forwards;
           animation: fade-down 1200ms ease 3600ms forwards;
 }
 
-.wrapper ~ .images, .run-animation ~ .images {
-  -webkit-animation: flicker-images 1500ms 2 steps 1, end, fade-out 4500ms forwards;
-          animation: flicker-images 1500ms 2 steps 1, end, fade-out 4500ms forwards;
+.wrapper.run-animation .image {
+  -webkit-animation: flicker-image 1500ms 2 steps(1, end), fade-out 4500ms forwards;
+          animation: flicker-image 1500ms 2 steps(1, end), fade-out 4500ms forwards;
 }
 
 @-webkit-keyframes slide-out-X {
@@ -245,7 +245,7 @@ header {
   100% {
     -webkit-transform: translateY(0);
             transform: translateY(0);
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 
@@ -258,7 +258,7 @@ header {
   100% {
     -webkit-transform: translateY(0);
             transform: translateY(0);
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 
@@ -274,7 +274,7 @@ header {
   }
 }
 
-@-webkit-keyframes flicker-images {
+@-webkit-keyframes flicker-image {
   0% {
     background-image: url("../img/maxresdefault.jpg");
   }
@@ -310,7 +310,7 @@ header {
   }
 }
 
-@keyframes flicker-images {
+@keyframes flicker-image {
   0% {
     background-image: url("../img/maxresdefault.jpg");
   }

@@ -8,17 +8,17 @@
     width: 96%
     margin: auto
 
-header
+.header
     margin: 0
-    background-color: $red
-    background-image: radial-gradient($red 20%, $ruby 50%, rgba($black, .5) 100%)
+    background-color: #e12835
+    background-image: radial-gradient(#e12835 20%, #be2633 50%, rgba(0, 0, 0, .5) 100%)
     background-size: 120%
     background-position: center
-    font-family: $default-font
-    animation: tighten-vinette ease-out ($animation-unit *6) forwards
+    font-family: 'Barlow Condensed', sans-serif
+    animation: tighten-vinette ease-out 1800ms forwards
 
 
-.images
+.image
     pointer-events: none
     height: 100vh
     top: 0
@@ -26,12 +26,12 @@ header
     right: 0
     left: 0
     position: absolute
-    opacity: .6
+    opacity: 0.6
     z-index: 20
     background-size: cover
     background-position: center
-    background-repeat: none
-    background-image: url("../img/hulk.jpg")
+    background-repeat: no-repeat
+    background-image: url("../img/hulk.jpg") 
 
 .wrapper
     height: 100vh
@@ -42,125 +42,137 @@ header
 .logo
     cursor: pointer
     text-align: center
-    &:hover
-        .title
-            opacity: .8
+
+.logo:hover .title
+    opacity: 0.8
 
 .title
-    color: $white
+    color: #fff
     text-transform: uppercase
-    letter-spacing: -.08rem
+    letter-spacing: -0.08rem
     font-size: 1.5rem
     margin-top: 20px
-    transition: opacity $animation-unit/2 linear
+    transition: opacity 150ms linear
 
 .name, .surname
     position: relative
-    color: $white
+    color: #fff
     text-transform: uppercase
-    letter-spacing: -.2rem
-    font-size: $font-size
+    letter-spacing: -0.2rem
+    font-size: 5rem
     margin: .05rem .05rem .5rem
-    padding: 0 $text-padding
+    padding: 0 0.4rem
     display: inline-block
 
 .surname
     font-weight: 500
-    letter-spacing: -.3rem
-    transform: translateX(-$tween)
+    letter-spacing: -0.3rem
+    transform: translateX(-95px)
 
 .name
     z-index: 10
     font-weight: 800
-    transform: translateX($tween)
-    &::before
-        z-index: -10
-        content: ''
-        display: block
-        background-color: $red
-        border: solid rgba($white, .2) 1px
-        height: 100%
-        width: 100%
-        position: absolute
-        top: 0
-        left: 0
-%bar
+    transform: translateX(95px)
+
+.name:before
+    z-index: -10
+    content: ''
+    display: block
+    background-color: #e12835
+    border: solid rgba(255, 255, 255, .2) 1px
+    height: 100%
+    width: 100%
+    position: absolute
+    top: 0
+    left: 0
+
+
+.surname::after, .surname::before
     content: ''
     display: block
     height: 2px
     position: absolute
-    background-color: $white
+    background-color: #fff
     display: block
-    left: $text-padding
-    right: $text-padding
-
-.surname
-    &:after, &:before
-        @extend %bar
-    &:before
-        top: 0
-    &:after
-        bottom: 0
+    left: 0.4rem
+    right: 0.4rem
 
 
-.wrapper, .run-animation
-    animation-name: shrink ease-out ($animation-unit * 16) forwards ($animation-unit * 2)
-    .name
-        transform: translateX ($tween)
-        animation: slide-out-X $slideOut ease forwards
-    .surname
-        transform: translateX ($tween)
-        color: transparent
-        animation: slide-out-X $slideOut ease forwards, show-text $animation-unit linear forwards ($slideOut * 2)
-        &:before
-            transform: translateY (($font-size + ($text-padding * 2)) / 2)
-            animation: slide-out-Y $animation-unit ease forwards $slideOut
-        &:after
-            transform: translateY (-(($font-size + ($text-padding * 2)) / 2))
-            animation: slide-out-Y $animation-unit ease forwards $slideOut
-
-    .title
-        opacity: 0
-        animation: fade-down ($animation-unit * 4) ease ($animation-unit * 12) forwards
-
-    ~  .images
-        animation: flicker-images ($animation-unit * 5) 2 steps (1, end), fade-out ($animation-unit * 5 * 3) forwards
+    
+.surname::before
+    top: 0
+.surname::after
+    bottom: 0
 
 
-@keyframes slide-out-X
-    100%
-        transform: translateX(0)
+.wrapper.run-animation
+    animation: shrink ease-out 4800ms forwards 600ms
 
-@keyframes slide-out-Y
-    100%
-        transform: translateY(0)
+.wrapper.run-animation .name
+    transform: translateX 95px
+    animation: slide-out-X 750ms ease forwards
 
-@keyframes show-text
-    100%
-        color: $white
+.wrapper.run-animation .surname
+    transform: translateX (-95px)
+    color: transparent
+    animation: slide-out-X 750ms ease forwards, show-text 300ms linear forwards 1500ms
 
-@keyframes shrink
-    100%
-        transform: scale(0.8)
+.wrapper.run-animation .surname::before
+    transform: translateY (2.9rem)
+    animation: slide-out-Y 300ms ease forwards 750ms
 
-@keyframes tighten-vinette
-    100%
-        background-size: 120%
+.wrapper.run-animation .surname::after
+    transform: translateY (-2.9rem)
+    animation: slide-out-Y 300ms ease forwards 750ms
 
-@keyframes fade-down
-    0%
-        transform: translateY(-2rem)
-        opacity: 0
-    100%
-        transform: translateY(0)
-        opacity: .5
+.wrapper.run-animation .title
+    opacity: 0
+    animation: fade-down 1200ms ease 3600ms forwards
 
-@keyframes fade-out
-    100%
-        opacity: 0
+.wrapper.run-animation .image
+    animation: flicker-image 1500ms 2 steps(1, end), fade-out 4500ms forwards
 
 
-@keyframes flicker-images
+@keyframes slide-out-X 
+  100% 
+    transform: translateX(0)
+  
+
+@keyframes slide-out-Y 
+  100% 
+    transform: translateY(0)
+  
+
+@keyframes show-text 
+  100% 
+    color: #fff
+  
+
+@keyframes shrink 
+  100% 
+    transform: scale(0.8)
+  
+
+@keyframes tighten-vinette 
+  100% 
+    background-size: 120%
+  
+@keyframes fade-down 
+  0% 
+    transform: translateY(-2rem)
+    opacity: 0
+  
+  100% 
+    transform: translateY(0)
+    opacity: 0.5
+  
+
+@keyframes fade-out 
+  100% 
+    opacity: 0
+  
+
+@keyframes flicker-image
     0%
      background-image: url("../img/maxresdefault.jpg")
 
